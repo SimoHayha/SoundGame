@@ -5,7 +5,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Sprite.h"
+#include "RenderComponent.h"
 #include "System.h"
 
 class GraphicsSystem : public System
@@ -20,10 +20,7 @@ public:
 	bool			HandleInput();
 	void			Render();
 
-	Sprite*	CreateSprite();
-	void	ReleaseSprite(Sprite* sprite);
-
 private:
 	std::auto_ptr<sf::RenderWindow>	m_window;
-	std::vector<Sprite>				m_sprites;
+	std::vector<RenderComponent>	m_renderComponents;
 };

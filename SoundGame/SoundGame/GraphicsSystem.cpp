@@ -34,6 +34,15 @@ bool GraphicsSystem::Initialize()
 
 	//return true;
 
+	try
+	{
+		m_renderComponents.resize(1024);
+	}
+	catch (std::bad_alloc&)
+	{
+		return false;
+	}
+
 	return true;
 }
 
@@ -49,42 +58,20 @@ bool GraphicsSystem::Update(float dt)
 	return true;
 }
 
-Sprite* GraphicsSystem::CreateSprite()
-{
-	//assert(m_firstSpriteAvailable != nullptr);
-
-	//Sprite*	newSprite = m_firstSpriteAvailable;
-	//m_firstSpriteAvailable = newSprite->GetNext();
-
-	//return newSprite;
-
-	return nullptr;
-}
-
-void GraphicsSystem::ReleaseSprite(Sprite* sprite)
-{
-	//assert(sprite != nullptr);
-
-	//sprite->SetNext(m_firstSpriteAvailable);
-	//m_firstSpriteAvailable = sprite;
-}
-
 bool GraphicsSystem::HandleInput()
 {
-	//sf::Event	event;
-	//while (m_window->pollEvent(event))
-	//{
-	//	if (event.type == sf::Event::Closed)
-	//		return false;
-	//}
-
-	//return true;
+	sf::Event	event;
+	while (m_window->pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+			return false;
+	}
 
 	return true;
 }
 
 void GraphicsSystem::Render()
 {
-	//m_window->clear();
-	//m_window->display();
+	m_window->clear();
+	m_window->display();
 }
